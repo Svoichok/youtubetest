@@ -30,7 +30,7 @@ test('пошук на YouTube і спроба підписки без автор
   });
 
   await test.step('Запуск четвертого відео у списку результатів', async () => {
-    await resultsPage.openFourthVideo();
+    await resultsPage.openVideo(3);
   });
 
   await test.step('Клік на аватар автора відео', async () => {

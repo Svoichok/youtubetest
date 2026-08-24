@@ -6,3 +6,4 @@ export function randomDigitsQuery(): string {
   }
   return digits;
 }
+

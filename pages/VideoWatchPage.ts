@@ -1,11 +1,12 @@
 import { BasePage } from './BasePage';
 
 export class VideoWatchPage extends BasePage {
-  async clickAuthorAvatar(): Promise<void> {
-    const primary = this.page.locator('ytd-video-owner-renderer #avatar');
-    const fallback = this.page.locator('ytd-video-owner-renderer img').first();
+  readonly authorAvatar = this.page.locator('.yt-simple-endpoint.style-scope.ytd-video-owner-renderer');
 
-    await primary.or(fallback).first().click();
+  async clickAuthorAvatar(): Promise<void> {
+
+    await this.authorAvatar.click();
     await this.waitForUrlToMatch(/\/(channel\/|@)/);
   }
+  
 }
