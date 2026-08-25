@@ -3,12 +3,12 @@ import { BasePage } from './BasePage';
 
 export class ChannelPage extends BasePage {
   private readonly channelContainer = this.page.locator('ytd-browse[page-subtype="channels"]');
-  private readonly subscribeButtonByRole = this.channelContainer.getByRole('button', { name: 
+  private readonly subscribeButtonByRole = this.channelContainer.getByRole('button', { name:
   /підписатися/i });
 
   async clickSubscribe(): Promise<void> {
     await this.channelContainer.waitFor({ state: 'visible' });
-  
+
 
     await this.subscribeButtonByRole.click();
     }

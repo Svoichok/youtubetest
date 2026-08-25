@@ -2,11 +2,11 @@ import { BasePage } from './BasePage';
 
 export class SearchResultsPage extends BasePage {
   private readonly topLevelResults = this.page.locator(
-    'xpath=//*[self::ytd-video-renderer or self::ytd-channel-renderer or self::ytd-radio-renderer or self::ytd-shelf-renderer][not(ancestor::ytd-shelf-renderer)]'
+    ':is(ytd-video-renderer, ytd-channel-renderer, ytd-radio-renderer, ytd-shelf-renderer):not(ytd-shelf-renderer *)'
   );
 
   private readonly topLevelVideos = this.page.locator(
-    'xpath=//ytd-video-renderer[not(ancestor::ytd-shelf-renderer)][.//a[@id="video-title" and not(contains(@href, "/shorts/"))]]'
+    'ytd-video-renderer:not(ytd-shelf-renderer *):has(#video-title:not([href*="/shorts/"]))'
   );
 
   async selectSecondResult(): Promise<void> {

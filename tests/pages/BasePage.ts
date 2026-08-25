@@ -16,6 +16,10 @@ export abstract class BasePage {
     await this.page.close();
   }
 
+  async goto(path: string = '/'): Promise<void> {
+    await this.page.goto(path, { waitUntil: 'domcontentloaded' });
+  }
+
   protected async waitForUrlToMatch(pattern: RegExp): Promise<void> {
     await this.page.waitForFunction(
       (source) => new RegExp(source).test(window.location.href),

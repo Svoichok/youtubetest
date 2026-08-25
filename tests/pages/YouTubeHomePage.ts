@@ -5,9 +5,9 @@ export class YouTubeHomePage extends BasePage {
     .locator('input[name="search_query"], input.yt-searchbox-input')
     .first();
   private readonly rejectConsentButton = this.page.getByRole('button', { name: /^(reject all|відхилити всі)$/i });
-  
+
   async goto(): Promise<void> {
-    await this.page.goto('/', { waitUntil: 'domcontentloaded' });
+    await super.goto('/');
     await this.dismissConsentIfPresent();
   }
 

@@ -8,5 +8,5 @@ export class VideoWatchPage extends BasePage {
     await this.authorAvatar.click();
     await this.waitForUrlToMatch(/\/(channel\/|@)/);
   }
-  
+
 }

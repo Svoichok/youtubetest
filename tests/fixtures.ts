@@ -13,7 +13,9 @@ type Pages = {
 
 export const test = base.extend<Pages>({
   homePage: async ({ page }, use) => {
-    await use(new YouTubeHomePage(page));
+    const homePage = new YouTubeHomePage(page);
+    await homePage.goto();
+    await use(homePage);
   },
   resultsPage: async ({ page }, use) => {
     await use(new SearchResultsPage(page));
