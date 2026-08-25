@@ -1,5 +1,5 @@
-import { test, expect } from './fixtures';
-import { randomDigitsQuery } from './utils/random';
+import { test, expect } from '../fixtures';
+import { randomDigitsQuery } from '../utils/random';
 
 test('пошук на YouTube і спроба підписки без авторизації', async ({ page, homePage, resultsPage, watchPage, channelPage }) => {
   await expect(page).toHaveTitle('YouTube');
