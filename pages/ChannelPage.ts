@@ -3,14 +3,15 @@ import { BasePage } from './BasePage';
 
 export class ChannelPage extends BasePage {
   private readonly channelContainer = this.page.locator('ytd-browse[page-subtype="channels"]');
-  private readonly subscribeButtonByRole = this.channelContainer.getByRole('button', { name: /підписатися/i });
+  private readonly subscribeButton = this.channelContainer.getByRole('button', { name: /підписатися/i });
+  private readonly popupContainer = this.page.locator('ytd-popup-container');
 
   async clickSubscribe(): Promise<void> {
     await this.channelContainer.waitFor({ state: 'visible' });
-    await this.subscribeButtonByRole.click();
+    await this.subscribeButton.click();
   }
 
   signInPrompt(): Locator {
-    return this.page.locator('ytd-popup-container').getByText(/увійти/i);
+    return this.popupContainer.getByText(/увійти/i);
   }
 }

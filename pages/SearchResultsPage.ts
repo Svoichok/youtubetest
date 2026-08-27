@@ -1,12 +1,15 @@
 import { BasePage } from './BasePage';
 
 export class SearchResultsPage extends BasePage {
+  private readonly shelfRenderer = 'ytd-shelf-renderer';
+  private readonly excludeNestedInShelf = `:not(${this.shelfRenderer} *)`;
+
   private readonly topLevelResults = this.page.locator(
-    ':is(ytd-video-renderer, ytd-channel-renderer, ytd-radio-renderer, ytd-shelf-renderer):not(ytd-shelf-renderer *)'
+    `:is(ytd-video-renderer, ytd-channel-renderer, ytd-radio-renderer, ${this.shelfRenderer})${this.excludeNestedInShelf}`
   );
 
   private readonly topLevelVideos = this.page.locator(
-    'ytd-video-renderer:not(ytd-shelf-renderer *):has(#video-title:not([href*="/shorts/"]))'
+    `ytd-video-renderer${this.excludeNestedInShelf}:has(#video-title:not([href*="/shorts/"]))`
   );
 
   async selectResult(index: number): Promise<void> {
