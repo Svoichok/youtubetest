@@ -6,7 +6,7 @@ test('пошук на YouTube і спроба підписки без автор
 
   await homePage.search(randomDigitsQuery());
   await resultsPage.maximizeWindow();
-  await resultsPage.selectSecondResult();
+  await resultsPage.selectResult(1);
 
   await resultsPage.openVideo(3);
 
